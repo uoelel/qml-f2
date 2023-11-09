@@ -1,0 +1,300 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+       %%% MODIFIED: unicode-math conflics with expex; mathspects conflicts with glossaries/leipzig
+  \usepackage{fontspec} % \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[]{DejaVu Sans}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={QML - Formative Assessment 2},
+  pdfauthor={YOUR EXAM NUMBER},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{QML - Formative Assessment 2}
+\author{YOUR EXAM NUMBER}
+\date{2023-11-09}
+
+\begin{document}
+\maketitle
+
+\section{Overview}\label{overview}
+
+\textbf{PLEASE READ CAREFULLY}
+
+\textbf{DUE Week 10 - Thu 23 November at noon}
+
+You must include your \textbf{exam number as the author} in the document
+preamble above.
+
+You'll notice that line 10 of the preamble says
+\texttt{mainfont:\ DejaVu\ Sans}. We would appreciate it if you'd use
+this font (or at least some other sans-serif font), but it's fine to use
+any other sans-serif font, like Arial. \textbf{Try to render this Rmd
+file now, before making any changes, to see if you have this font
+installed.}
+
+\begin{itemize}
+\tightlist
+\item
+  If you get an error message saying that DejaVu Sans could not be
+  found, you can download it here:
+  \url{http://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-fonts-ttf-2.37.zip}.
+\item
+  Then, install it appropriately for your operating system.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Here's a guide for Windows:
+    \url{https://www.digitaltrends.com/computing/how-to-install-fonts-in-windows-10/}.
+  \item
+    Here's a guide for Mac:
+    \url{https://support.apple.com/en-gb/HT201749}.
+  \end{itemize}
+\item
+  If you are having issues with this, feel free to use any other
+  sans-serif font you have installed on your machine, like Arial.
+\end{itemize}
+
+This assessment covers \textbf{Weeks 1 to 8}.
+
+You are asked to \textbf{read, wrangle, summarise, plot and model data}
+from Lorson, Alex, Cummins, Chris \& Rohde, Hannah. 2021. `Strategic use
+of (un)certainty expressions'. Frontiers in Communication. 6. DOI:
+\url{https://doi.org/10.3389/fcomm.2021.635156}.
+
+Read the paper abstract to get a sense of what the study is about.
+
+You will analyse the data from the second study in the paper. You can
+skim Section 3.2 of the paper for an overview of the study. You will
+work on the \texttt{Participant}, \texttt{Response}, \texttt{Scenario},
+\texttt{Gender} and \texttt{Age} columns.
+
+\textbf{When you are ready to submit}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Render the Rmd file to \textbf{PDF}.
+\item
+  \textbf{Rename} the PDF to your exam number only.
+\item
+  \textbf{Upload} the PDF file to Learn.
+\end{enumerate}
+
+\section{Read the data}\label{read-the-data}
+
+\textbf{Instructions}:
+
+\begin{itemize}
+\tightlist
+\item
+  Read the data in \texttt{data/lorson2021-Study2d.csv}.
+\item
+  Write a paragraph describing the data frame. Include the following
+  information (some of these will require you to write R code):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Number of observations and columns.
+  \item
+    Number of participants (\texttt{Participant}).
+  \item
+    Minimum and maximum number of observations per participant.
+  \item
+    Levels of \texttt{Response}.
+  \item
+    Levels of \texttt{Gender}.
+  \item
+    Levels of \texttt{Scenario}.
+  \end{itemize}
+\end{itemize}
+
+\section{Calculate summary measures}\label{calculate-summary-measures}
+
+\textbf{Instructions}:
+
+\begin{itemize}
+\tightlist
+\item
+  Since all the relevant variables except \texttt{Age} are categorical,
+  it might be useful to just report for these the number of each
+  response (``know'' vs ``believe'') in the different combinations of
+  \texttt{Scenario} and \texttt{Gender}.
+\item
+  Write R code to obtain those counts. If you want you can write a
+  markdown table with the counts. You can use this online tool to create
+  and copy-paste a markdown table:
+  \url{https://www.tablesgenerator.com/markdown_tables}.
+\item
+  Although we will not include \texttt{Age} in our model later, it is
+  customary to provide readers with general socio-demographic
+  information on the participants and this usually includes summary
+  measures for the participants' age.
+\item
+  Go ahead and calculate the appropriate summary measures for
+  \texttt{Age}. Write a sentence reporting the measures.
+\end{itemize}
+
+\section{Plot the data}\label{plot-the-data}
+
+\textbf{Instructions}:
+
+\begin{itemize}
+\tightlist
+\item
+  Now plot the data as you see fit. Remember that the focus of the study
+  is how participants use ``know'' vs ``believe'' (\texttt{Response}) so
+  you might want your plots to focus on that variable, but feel free to
+  also plot combinations of any of \texttt{Participant},
+  \texttt{Response}, \texttt{Scenario}, \texttt{Gender} and
+  \texttt{Age}.
+\item
+  For each plot, write a brief description (include information on the
+  components of the plot like axes, colour, panels etc and briefly
+  describe the patterns you see).
+\item
+  Plotting the data is a good way of familiarising yourself with it, so
+  that when it comes to modelling you have a better sense of what the
+  data looks like!
+\end{itemize}
+
+\section{Model the data}\label{model-the-data}
+
+\textbf{Instructions}
+
+\begin{itemize}
+\tightlist
+\item
+  Finally, you can model the data and write a model report.
+\item
+  You are trying to answer the following research question: \emph{Do
+  participants show a preference for ``know'' vs ``believe'' depending
+  on their gender and the scenario they are in?}.
+\item
+  Follow these steps to help you model the data:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Identify the outcome variable and the predictors.
+  \item
+    Do you need to transform the variables and/or reorder levels?
+  \item
+    Identify the appropriate distribution for the outcome variable.
+  \item
+    Is an interaction term necessary?
+  \end{itemize}
+\end{itemize}
+
+\section{Results}\label{results}
+
+\textbf{Instructions}
+
+\begin{itemize}
+\tightlist
+\item
+  You should include at least two paragraphs, (a) one reporting the
+  model specifications (outcome, distribution of the outcome,
+  predictors, coding, \ldots) and (b) one reporting the results from the
+  model (estimates and estimates' SD, Credible Intervals, conditional
+  posteriors and differences across different levels, etc\ldots)
+\item
+  Include plots of the posterior distributions of each coefficient
+  (listed in the model summary) and the conditional posterior
+  distributions. You can also include the posterior distributions of
+  differences among levels not covered by the coefficients, if any.
+\end{itemize}
+
+We fitted a Bayesian model\ldots{}
+
+According to the results, \ldots{}
+
+\section{Discuss the results}\label{discuss-the-results}
+
+\textbf{Instructions}:
+
+\begin{itemize}
+\tightlist
+\item
+  Based on the results which you reported above, try and answer the
+  research question: \emph{Do participants show a preference for
+  ``know'' vs ``believe'' depending on their gender and the scenario
+  they are in?}.
+\item
+  To give you an example of what we are looking for, here is a short
+  paragraph on interpreting the results from the Week 8 lecture on
+  morphological parsing.
+\end{itemize}
+
+\begin{quote}
+As suggested by the 95\% CrI of the interaction term (in log-odds
+{[}-1.72, 0.42{]}) for constituent relation type and right-branching
+pairs, there is quite a lot of uncertainty in relation to the difference
+in probability of correct response in unrelated vs constituent in
+right-branching pairs, since the interval covers both negative and
+positive values. Moreover, the conditional posterior probabilities of
+unrelated and right-branching on the one hand and constituent and right
+branching on the other are very similar, as can be seen in the plot (and
+as suggested by the respective 95\% CrIs: 90-97\% vs 91-97\%
+respectively).
+\end{quote}
+
+\end{document}
